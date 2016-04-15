@@ -8,11 +8,11 @@ angular.module('app.directives', []).directive('qrcode', function($interpolate) 
   return {
     restrict: 'E',
     link: function($scope, $element, $attrs) {
-// Make width height responsive
+      
       var options = {
         text: '',
-        width: 128,
-        height: 128,
+        width: Math.min(window.innerHeight, window.innerWidth) / 4 * 3,
+        height: Math.min(window.innerHeight, window.innerWidth) / 4 * 3,
         colorDark: '#000000',
         colorLight: '#ffffff',
         correctLevel: 'H'

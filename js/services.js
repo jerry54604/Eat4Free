@@ -1,10 +1,15 @@
-angular.module('app.services', [])
+var app = angular.module('app.services', [])
 
-.factory('BlankFactory', [function(){
-
+app.factory('User', [function(){
+  return {
+    getUsername: function () {
+      // TO-DO: Need to get from session instead of hardcode
+      return 'TestUser';
+    }
+  };
 }])
 
-.service('BlankService', [function(){
+app.service('BlankService', [function(){
 
 }]);
 

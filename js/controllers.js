@@ -1,7 +1,7 @@
 angular.module('app.controllers', [])
   
-.controller('homeCtrl', function($scope) {
-
+.controller('homeCtrl', function($scope, User) {
+  $scope.username = User.getUsername();
 })
    
 .controller('voucherCtrl', function($scope) {

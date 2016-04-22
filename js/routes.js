@@ -10,8 +10,8 @@ angular.module('app.routes', [])
     
   
 
-      .state('menu.home', {
-    url: '/page1',
+  .state('menu.home', {
+    url: '/home',
     views: {
       'side-menu21': {
         templateUrl: 'templates/home.html',
@@ -65,8 +65,15 @@ angular.module('app.routes', [])
     templateUrl: 'templates/menu.html',
     abstract:true
   })
+  
+  .state('login', {
+      url: '/login',
+      templateUrl: 'templates/login.html',
+      controller: 'LoginCtrl'
+  })
 
-$urlRouterProvider.otherwise('/side-menu21/page1')
+//$urlRouterProvider.otherwise('/side-menu21/page1')
+$urlRouterProvider.otherwise('/login')
 
   
 

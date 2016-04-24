@@ -1,5 +1,7 @@
 <ion-view title="Home">
     <ion-content overflow-scroll="true" padding="true" class="has-header">
-        <qrcode text="{{username}}" color-bright="#ff0000"></qrcode>
+      <div ng-if="flag">
+        <qrcode text="{{id}}" color-bright="#ff0000" ng-if="flag"></qrcode>
+      </div>
     </ion-content>
 </ion-view>

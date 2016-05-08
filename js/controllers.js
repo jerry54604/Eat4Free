@@ -26,7 +26,8 @@ angular.module('app.controllers', [])
   }
 
   $scope.signup = function() {
-    SignupService.signup($scope.data.username, $scope.data.password, $scope.data.email, $scope.data.firstname, $scope.data.lastname)
+    // username = email
+    SignupService.signup($scope.data.email, $scope.data.password, $scope.data.email, $scope.data.firstname, $scope.data.lastname)
     .success(function(data) {
       $state.go('menu.home');
     }).error(function(data) {

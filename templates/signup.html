@@ -1,22 +1,28 @@
 <ion-view view-title="Signup" name="signup-view">
   <ion-content class="padding">
-    <div class="list list-inset">
-      <label class="item item-input">
-        <input type="text" placeholder="Username" ng-model="data.username">
-      </label>
-      <label class="item item-input">
-        <input type="password" placeholder="Password" ng-model="data.password">
-      </label>
-      <label class="item item-input">
-        <input type="email" placeholder="Email" ng-model="data.email">
-      </label>
-      <label class="item item-input">
-        <input type="text" placeholder="First Name" ng-model="data.firstname">
-      </label>
-      <label class="item item-input">
-        <input type="text" placeholder="Last Name" ng-model="data.lastname">
-      </label>
-    </div>
-    <button class="button button-block button-calm" ng-click="signup()">Signup</button>
+    <form name="signupForm" novalidate>
+      <div class="list list-inset">
+        <label class="item item-input">
+          <input type="text" placeholder="Email" ng-model="data.email" name="email" required duplicated email ng-model-options="{ updateOn: 'blur' }" />
+        </label>
+        <label class="item item-input">
+          <input type="password" placeholder="Password" ng-model="data.password" name="password" pattern=".{8,}" required />
+        </label>
+        <label class="item item-input">
+          <input type="text" placeholder="First Name" ng-model="data.firstname" required />
+        </label>
+        <label class="item item-input">
+          <input type="text" placeholder="Last Name" ng-model="data.lastname" required />
+        </label>
+      </div>
+      <span ng-show="signupForm.email.$pending.email">Checking if this name is available...</span>
+      <span ng-show="signupForm.email.$error.duplicated">This username is already taken!</span>
+      <span ng-show="signupForm.email.$error.email">Invalid email address.</span>
+      <span ng-show="signupForm.email.$touched && signupForm.email.$error.required">The email is required.</span>
+      <span ng-show="signupForm.password.$touched && signupForm.password.$invalid">Password minimum length 8</span>
+      
+      <button class="button button-block button-calm" ng-click="signup()"
+        ng-disabled="signupForm.$invalid">Signup</button>
+    </form>
   </ion-content>
 </ion-view>

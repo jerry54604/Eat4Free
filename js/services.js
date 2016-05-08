@@ -1,6 +1,6 @@
-var app = angular.module('app.services', [])
+var appServices = angular.module('app.services', [])
 
-app.factory('User', function($q, $http){
+appServices.factory('User', function($q, $http){
   return {
     getId: function () {
       var deferred = $q.defer();
@@ -31,11 +31,11 @@ app.factory('User', function($q, $http){
   };
 })
 
-app.service('BlankService', [function(){
+appServices.service('BlankService', [function(){
 
 }]);
 
-app.service('LoginService', function($q, $http, $httpParamSerializerJQLike) {
+appServices.service('LoginService', function($q, $http, $httpParamSerializerJQLike) {
   return {
     loginUser: function(username, pass) {
       var deferred = $q.defer();
@@ -69,7 +69,7 @@ app.service('LoginService', function($q, $http, $httpParamSerializerJQLike) {
   }
 })
 
-app.service('SignupService', function($q, $http, $httpParamSerializerJQLike) {
+appServices.service('SignupService', function($q, $http, $httpParamSerializerJQLike) {
   return {
     signup: function(username, pass, email, firstname, lastname) {
       var deferred = $q.defer();

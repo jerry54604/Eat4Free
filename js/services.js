@@ -35,13 +35,13 @@ appServices.service('BlankService', [function(){
 
 }]);
 
-appServices.service('LoginService', function($q, $http, $httpParamSerializerJQLike) {
+appServices.service('LoginService', function($q, $http, $httpParamSerializerJQLike, config) {
   return {
     loginUser: function(username, pass) {
       var deferred = $q.defer();
       var promise = deferred.promise;
       
-      var link = 'http://localhost/eat4free/login.php';
+      var link = config.baseUrl + 'eat4free/login.php';
       
       $http({
         method: 'POST',

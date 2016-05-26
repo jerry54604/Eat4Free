@@ -1,12 +1,12 @@
 var appServices = angular.module('app.services', [])
 
-appServices.factory('User', function($q, $http){
+appServices.factory('User', function ($q, $http, config) {
   return {
     getId: function () {
       var deferred = $q.defer();
       var promise = deferred.promise;
       
-      var link = 'http://localhost/eat4free/get-token-data.php';
+      var link = config.baseUrl + 'eat4free/get-token-data.php';
       
       $http({
         method: 'GET',
@@ -18,11 +18,11 @@ appServices.factory('User', function($q, $http){
           deferred.reject('Wrong credentials.');
         });
       
-      promise.success = function(fn) {
+      promise.success = function (fn) {
         promise.then(fn);
         return promise;
       }
-      promise.error = function(fn) {
+      promise.error = function (fn) {
         promise.then(null, fn);
         return promise;
       }
@@ -31,13 +31,13 @@ appServices.factory('User', function($q, $http){
   };
 })
 
-appServices.service('BlankService', [function(){
+appServices.service('BlankService', [function () {
 
 }]);
 
-appServices.service('LoginService', function($q, $http, $httpParamSerializerJQLike, config) {
+appServices.service('LoginService', function ($q, $http, $httpParamSerializerJQLike, config) {
   return {
-    loginUser: function(username, pass) {
+    loginUser: function (username, pass) {
       var deferred = $q.defer();
       var promise = deferred.promise;
       
@@ -46,7 +46,7 @@ appServices.service('LoginService', function($q, $http, $httpParamSerializerJQLi
       $http({
         method: 'POST',
         url: link,
-        data: $httpParamSerializerJQLike({username : username, pass: pass}),
+        data: $httpParamSerializerJQLike({ username: username, pass: pass }),
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
       }).then(function successCallback(response) {
           localStorage.setItem('Auth', response.data);
@@ -56,11 +56,11 @@ appServices.service('LoginService', function($q, $http, $httpParamSerializerJQLi
           deferred.reject('Wrong credentials.');
         });
       
-      promise.success = function(fn) {
+      promise.success = function (fn) {
         promise.then(fn);
         return promise;
       }
-      promise.error = function(fn) {
+      promise.error = function (fn) {
         promise.then(null, fn);
         return promise;
       }
@@ -69,9 +69,9 @@ appServices.service('LoginService', function($q, $http, $httpParamSerializerJQLi
   }
 })
 
-appServices.service('SignupService', function($q, $http, $httpParamSerializerJQLike) {
+appServices.service('SignupService', function ($q, $http, $httpParamSerializerJQLike) {
   return {
-    signup: function(username, pass, email, firstname, lastname) {
+    signup: function (username, pass, email, firstname, lastname) {
       var deferred = $q.defer();
       var promise = deferred.promise;
       
@@ -80,7 +80,7 @@ appServices.service('SignupService', function($q, $http, $httpParamSerializerJQL
       $http({
         method: 'POST',
         url: link,
-        data: $httpParamSerializerJQLike({username : username, pass: pass, email: email, firstname: firstname, lastname: lastname}),
+        data: $httpParamSerializerJQLike({ username: username, pass: pass, email: email, firstname: firstname, lastname: lastname }),
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       }).then(function successCallback(response) {
           localStorage.setItem('Auth', response.data);
@@ -90,11 +90,11 @@ appServices.service('SignupService', function($q, $http, $httpParamSerializerJQL
           deferred.reject('Wrong credentials.');
         });
       
-      promise.success = function(fn) {
+      promise.success = function (fn) {
         promise.then(fn);
         return promise;
       }
-      promise.error = function(fn) {
+      promise.error = function (fn) {
         promise.then(null, fn);
         return promise;
       }

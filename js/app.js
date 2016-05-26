@@ -8,7 +8,7 @@
 var app = angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services', 'app.directives'])
 
 .constant('config', {
-    baseUrl: 'http://localhost/'
+  baseUrl: 'http://localhost/'
 })
 
 .run(function($ionicPlatform) {

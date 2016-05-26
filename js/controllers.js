@@ -49,8 +49,12 @@ angular.module('app.controllers', [])
     });
 })
    
-.controller('voucherCtrl', function($scope) {
-
+.controller('voucherCtrl', function ($scope) {
+  // Get vouchers from server
+  $scope.vouchers = [
+    { title: "Voucher1", description: "simple voucher", expired_date: "31 May 2016" },
+    { title: "Voucher2", description: "simple voucher2", expired_date: "3 Jun 2016" }
+  ];
 })
    
 .controller('searchCtrl', function($scope) {
@@ -64,4 +68,3 @@ angular.module('app.controllers', [])
 .controller('sampleCtrl', function($scope) {
 
 })
-    
